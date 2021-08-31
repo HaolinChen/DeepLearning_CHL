@@ -1,0 +1,30 @@
+tensor([[0.5724, 0.4276]], device='cuda:0')
+tensor([[0.5286, 0.5235, 0.2449, 0.7881]], device='cuda:0')
+587
+tensor([[0.5956, 0.4044]], device='cuda:0')
+tensor([[0.5353, 0.5420, 0.2460, 0.7936]], device='cuda:0')
+675
+tensor([[0.5603, 0.4397]], device='cuda:0')
+tensor([[0.5318, 0.5257, 0.2271, 0.7932]], device='cuda:0')
+677
+tensor([[0.5694, 0.4306]], device='cuda:0')
+tensor([[0.5298, 0.5428, 0.2541, 0.8273]], device='cuda:0')
+681
+tensor([[0.5797, 0.4203]], device='cuda:0')
+tensor([[0.5361, 0.5495, 0.2408, 0.8046]], device='cuda:0')
+683
+tensor([[0.5847, 0.4153]], device='cuda:0')
+tensor([[0.5280, 0.5372, 0.2245, 0.7642]], device='cuda:0')
+767
+tensor([[0.5811, 0.4189]], device='cuda:0')
+tensor([[0.5424, 0.5466, 0.2405, 0.8159]], device='cuda:0')
+771
+tensor([[0.5950, 0.4050]], device='cuda:0')
+tensor([[0.5423, 0.5570, 0.2330, 0.8399]], device='cuda:0')
+773
+tensor([[0.5923, 0.4077]], device='cuda:0')
+tensor([[0.6483, 0.5842, 0.2297, 0.7569]], device='cuda:0')
+867
+tensor([[0.5964, 0.4036]], device='cuda:0')
+tensor([[0.6540, 0.5851, 0.2297, 0.7719]], device='cuda:0')
+869

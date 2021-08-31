@@ -1,0 +1,6 @@
+BACKGROUND
+pedestrians
+riders
+partially
+ignore
+crowd

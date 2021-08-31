@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0e37a970-4a9e-4435-b251-c05d37421a72" name="root">
+        <fileTransfer rootFolder="/home/wrd/HaolinChen" accessType="SFTP" sshConfigId="60233276-3318-44af-8aa7-8373d9eb84f4" sshConfig="root@192.168.1.101:1999 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

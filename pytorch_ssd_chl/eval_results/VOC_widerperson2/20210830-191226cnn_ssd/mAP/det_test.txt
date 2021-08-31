@@ -1,0 +1,5 @@
+Average Precision Per-class:
+pedestrians: 0.3733823498420599
+partially: 0.00272099112303238
+
+Average Precision Across All Classes:0.18805167048254615

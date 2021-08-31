@@ -1,0 +1,2 @@
+eval_ssd.py --dataset ../data_set/VOCdevkit/VOC2007 --trained_model models/mb2-ssd-lite-mp-0_686.pth --label_file models/voc-model-labe
+ls.txt
