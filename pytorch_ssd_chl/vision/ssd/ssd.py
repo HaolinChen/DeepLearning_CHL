@@ -87,51 +87,48 @@ class SSD(nn.Module):
             confidences.append(confidence)
             locations.append(location)
 
-        # confidences = torch.cat(confidences, 1)
-        # locations = torch.cat(locations, 1)
-        #
-        # if self.is_test:
-        #     confidences = F.softmax(confidences, dim=2)
-        #     boxes = box_utils.convert_locations_to_boxes(
-        #         locations, self.priors, self.config.center_variance, self.config.size_variance
-        #     )
-        #     # with open('out_debug/output6_box.txt', "w") as f:
-        #     #     boxes_out8 = boxes[:, 60 * 60 * 6 + 30 * 30 * 6:60 * 60 * 6 + 30 * 30 * 6 + 15 * 15 * 6, :]
-        #     #     print(boxes_out8, file=f)
-        #     # with open('out_debug/output56_confidence.txt', "w") as f:
-        #     #     confidences_out6 = confidences[:, 60 * 60 * 6 + 30 * 30 * 6:60 * 60 * 6 + 30 * 30 * 6 + 15 * 15 * 6, :]
-        #     #     boxes_out6 = boxes[:, 60 * 60 * 6 + 30 * 30 * 6:60 * 60 * 6 + 30 * 30 * 6 + 15 * 15 * 6, :]
-        #     #     locations_out6 = locations[:, 60 * 60 * 6 + 30 * 30 * 6:60 * 60 * 6 + 30 * 30 * 6 + 15 * 15 * 6, :]
-        #     #     for i in range(0, 15 * 15 * 6):
-        #     #         if confidences_out6[:, i, 1] > 0.4:
-        #     #             print(confidences_out6[:, i, :], file=f)
-        #     #             print(boxes_out6[:, i, :], file=f)
-        #     #             print(locations_out6[:, i, :], file=f)
-        #     #             print(i, file=f)
-        #
-        #     boxes = box_utils.center_form_to_corner_form(boxes)
-        #     return confidences, boxes
-        # else:
-        #     return confidences, locations
-        return confidences[0], locations[0], confidences[1], locations[1], confidences[2], locations[2], confidences[3], \
-               locations[3]
+        confidences = torch.cat(confidences, 1)
+        locations = torch.cat(locations, 1)
+
+        if self.is_test:
+            confidences = F.softmax(confidences, dim=2)
+            boxes = box_utils.convert_locations_to_boxes(
+                locations, self.priors, self.config.center_variance, self.config.size_variance
+            )
+            # with open('out_debug/output56_confidence.txt', "w") as f:
+            #     confidences_out6 = confidences[:, 16 * 20 * 6 + 8 * 10 * 6:16 * 20 * 6 + 8 * 10 * 6 + 4 * 5 * 6, :]
+            #     boxes_out6 = boxes[:, 16 * 20 * 6 + 8 * 10 * 6:16 * 20 * 6 + 8 * 10 * 6 + 4 * 5 * 6, :]
+            #     locations_out6 = locations[:, 16 * 20 * 6 + 8 * 10 * 6:16 * 20 * 6 + 8 * 10 * 6 + 4 * 5 * 6, :]
+            #     for i in range(0, 4 * 5 * 6):
+            #         if confidences_out6[:, i, 1] > 0.3:
+            #             print(confidences_out6[:, i, :], file=f)
+            #             print(boxes_out6[:, i, :], file=f)
+            #             print(locations_out6[:, i, :], file=f)
+            #             print(i, file=f)
+
+            boxes = box_utils.center_form_to_corner_form(boxes)
+            return confidences, boxes
+        else:
+            return confidences, locations
+        # return confidences[0], locations[0], confidences[1], locations[1], confidences[2], locations[2], confidences[3], \
+        #        locations[3]
 
     def compute_header(self, i, x):
         confidence = self.classification_headers[i](x)
-        # confidence = confidence.permute(0, 2, 3, 1).contiguous()
-        # confidence = confidence.view(confidence.size(0), -1, self.num_classes)
+        confidence = confidence.permute(0, 2, 3, 1).contiguous()
+        confidence = confidence.view(confidence.size(0), -1, self.num_classes)
 
         location = self.regression_headers[i](x)
-        # location = location.permute(0, 2, 3, 1).contiguous()  # 调整张量维度 batch*channel*size*size -> batch*size*size*24
-        # # if i == 2:
-        # #     with open('out_debug/output6_permute.txt', "w") as f:
-        # #         # torch.set_printoptions(threshold=np.inf)
-        # #         print(location, file=f)
-        # location = location.view(location.size(0), -1, 4)  # 调整张量维度 batch*size*size*channel -> batch*box_num*4
-        # # if i == 2:
-        # #     with open('out_debug/output6_view.txt', "w") as f:
-        # #         # torch.set_printoptions(threshold=np.inf)
-        # #         print(location, file=f)
+        location = location.permute(0, 2, 3, 1).contiguous()  # 调整张量维度 batch*channel*size*size -> batch*size*size*24
+        # if i == 2:
+        #     with open('out_debug/output5_permute.txt', "w") as f:
+        #         # torch.set_printoptions(threshold=np.inf)
+        #         print(location, file=f)
+        location = location.view(location.size(0), -1, 4)  # 调整张量维度 batch*size*size*channel -> batch*box_num*4
+        # if i == 2:
+        #     with open('out_debug/output5_view.txt', "w") as f:
+        #         # torch.set_printoptions(threshold=np.inf)
+        #         print(location, file=f)
         return confidence, location
 
     def init_from_base_net(self, model):

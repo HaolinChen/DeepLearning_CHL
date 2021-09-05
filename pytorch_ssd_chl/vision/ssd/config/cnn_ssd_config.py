@@ -14,7 +14,9 @@ specs = [
     cnnSSDSpec(16, 20, 8, 8, SSDBoxSizes(25.6, 44.8), [2, 3]),  # 0.2
     cnnSSDSpec(8, 10, 16, 16, SSDBoxSizes(44.8, 64), [2, 3]),  # 0.35
     cnnSSDSpec(4, 5, 32, 32, SSDBoxSizes(64, 83.2), [2, 3]),  # 0.5
-    cnnSSDSpec(2, 2, 64, 80, SSDBoxSizes(76.8, 102.4), [2, 3])  # 0.65
+    # cnnSSDSpec(2, 2, 64, 80, SSDBoxSizes(76.8, 102.4), [2, 3])  # 0.65
+    cnnSSDSpec(2, 2, 64, 80, SSDBoxSizes(83.2, 102.4), [2, 3])  # 0.65
 ]
+
 
 priors = generate_cnn_ssd_priors(specs, image_size)

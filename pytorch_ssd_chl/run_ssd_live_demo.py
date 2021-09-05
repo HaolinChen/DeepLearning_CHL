@@ -45,7 +45,7 @@ fps = 10
 # 获取窗口大小q
 size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
 # 调用VideoWrite（）函数
-videoWriter = cv2.VideoWriter('test_results/cnn_ssd_video3.avi', cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'),
+videoWriter = cv2.VideoWriter('test_results/3.avi', cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'),
                               fps, size)
 
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

@@ -32,7 +32,7 @@ from vision.ssd.config import chl_ssd_tiny_config
 from vision.ssd.config import cnn_ssd_config
 from vision.ssd.data_preprocessing import TrainAugmentation, TestTransform
 
-train_dataset = "VOC_widerperson2"
+train_dataset = "aideck_person2"
 model_name = "cnn_ssd"
 result_folder = "train_results/" + train_dataset + "/{}".format(
     datetime.datetime.now().strftime("%Y%m%d-%H%M%S")) + model_name
