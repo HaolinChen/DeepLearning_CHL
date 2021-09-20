@@ -7,7 +7,7 @@ from xml.dom.minidom import parseString
 import cv2
 from os.path import join
 
-folder_root = 'VOCdevkit/aideck_person2'
+folder_root = 'VOCdevkit/aideck_person1'
 yolo_root = 'cust_data_7'
 YOLO_CLASSES = ['person']
 
